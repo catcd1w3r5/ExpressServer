@@ -21,7 +21,7 @@ function LoadMiddlewares(app, middlewareDir) {
             //If the middleware is a function, convert it to an object and add it to the array
             switch (typeof middlewares[i]) {
                 case 'function':
-                    middlewares[i] = {handle: middlewares[i], priority: 0, name: 'Function Converted'};
+                    middlewares[i] = {handle: middlewares[i], priority: 0, name: 'Middleware Object from Function'};
                     break;
                 case 'object':
                     //if priority is not set, set it to 0
