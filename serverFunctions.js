@@ -78,8 +78,10 @@ function loadEndpoints(app, endpointsDir) {
 
   // flatten the array
   endpoints.forEach((endpoint, i) => {
-    if (Array.isArray(endpoint)) endpoints.push(...endpoint);
-    endpoints.splice(i, 1);
+    if (Array.isArray(endpoint)) {
+      endpoints.push(...endpoint);
+      endpoints.splice(i, 1);
+    }
   });
 
   function loadExtractedEndpoint(endpoint) {
@@ -90,8 +92,11 @@ function loadEndpoints(app, endpointsDir) {
       name = 'Unnamed',
       path,
       handler,
+      handle,
       disabled,
     } = endpoint;
+
+    const handleFunction = handler || handle;
 
     let {
       method = 'GET',
@@ -110,9 +115,9 @@ function loadEndpoints(app, endpointsDir) {
     // check if the path is valid
     if (typeof path !== 'string') throw new Error(`Endpoint ${name} contains invalid path`);
     // check if the handler is valid
-    if (typeof handler !== 'function') throw new Error(`Endpoint ${name} contains invalid handler`);
+    if (typeof handleFunction !== 'function') throw new Error(`Endpoint ${name} contains invalid handler`);
 
-    app[method](path, handler);
+    app[method](path, handleFunction);
   }
 
   endpoints.forEach(loadExtractedEndpoint);

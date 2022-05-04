@@ -15,7 +15,9 @@ const LoadAllFilesFromFolder = (folder, fileExt, loadingDelegate, recursive = fa
   // eslint-disable-next-line no-param-reassign
   if (fileExt.indexOf('.') === -1) fileExt = `.${fileExt}`;
   files.forEach((file) => {
-    const filePath = `${folder}/${file}`;
+    // TEMP FIX TODO (if u r not a cat u can ignore this)
+    // const filePath = `${folder}/${file}`;
+    const filePath = `.${folder}/${file}`;
     if (file.endsWith(fileExt)) {
       scripts.push(loadingDelegate(filePath));
     } else if (recursive && fs.lstatSync(filePath)
