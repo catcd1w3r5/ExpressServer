@@ -1,11 +1,11 @@
-const {LoadAllFilesFromFolder, EnsureFolderExistsSync} = require('./FsExtras');
+const {LoadAllFilesFromFolder, EnsureFolderExistsSync} = require('./fsExtras');
 
 /**
  * Loads all middlewares from a folder.
  * @param app {Express} -Express app
  * @param middlewareDir {string} -Path to the folder containing the middleware
  */
-function LoadMiddlewares(app, middlewareDir) {
+function loadMiddlewares(app, middlewareDir) {
     {
         EnsureFolderExistsSync(middlewareDir);
         let middlewares = LoadAllFilesFromFolder(middlewareDir, '.js', require, true);
@@ -57,7 +57,7 @@ function LoadMiddlewares(app, middlewareDir) {
  * @param app {Express} -Express app
  * @param endpointsDir {string} -Path to the folder containing the endpoints
  */
-function LoadEndpoints(app, endpointsDir) {
+function loadEndpoints(app, endpointsDir) {
     {
         EnsureFolderExistsSync(endpointsDir);
         let endpoints = LoadAllFilesFromFolder(endpointsDir, '.js', require, true);
@@ -96,6 +96,6 @@ function LoadEndpoints(app, endpointsDir) {
 }
 
 module.exports = {
-    LoadMiddlewares,
-    LoadEndpoints
+    loadMiddlewares,
+    loadEndpoints
 };

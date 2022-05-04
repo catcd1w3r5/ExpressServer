@@ -124,4 +124,4 @@ module.export = [
 
 ### Folders
 
-The folders used to configure the endpoints and middleware folders can be configured in the app.js file
+The folders used to configure the endpoints and middleware folders can be configured in the usageExample.js file
