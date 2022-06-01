@@ -6,7 +6,7 @@ const fs = require('fs');
  * @param fileExt {string} - The file extension to search for
  * @param loadingDelegate {function(string) : *} - The function to call when a file is found
  * @param recursive {boolean} - Whether to search recursively
- * @returns {*[]} - An array of files found (After processed by loadingDelegate)
+ * @returns {*[]} - Array of files found (After processed by loadingDelegate)
  */
 const LoadAllFilesFromFolder = (folder, fileExt, loadingDelegate, recursive = false) => {
   const scripts = [];

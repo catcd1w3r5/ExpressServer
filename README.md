@@ -1,13 +1,36 @@
 # ExpressServer
 
 ExpressServer Template meant for larger scale projects.
-
-Note that this is a template and not a full-featured ExpressServer.
+It aims to reduce code size and improve readability through dynamically looking for files in the directory structure.
 
 **[Warning]** This project is under active development and is not ready for production use.
 
-
 ## To get started right away
+
+### Index.js
+
+```js
+//Install Express - npm install express
+const Express = require('express');
+const App = Express();
+const {loadMiddlewares, loadEndpoints} = require('./serverFunctions');
+
+//Locate and load all middlewares in the middleware folder using fs
+loadMiddlewares(App, './Middleware');
+
+//Locate and load all endpoints in the endpoint folder using fs
+loadEndpoints(App, './Controller/Endpoint');
+
+App.listen(3000, () => {
+    console.log('Server is running on port 3000');
+});
+
+````
+
+#### Folders
+
+The folders used to configure the endpoints and middleware folders can be configured in the file above by changing the
+path to the folder in loadEndpoints and loadMiddlewares respectively.
 
 ### Endpoints
 
@@ -121,7 +144,3 @@ module.export = [
     }
 ]
 ```
-
-### Folders
-
-The folders used to configure the endpoints and middleware folders can be configured in the usageExample.js file

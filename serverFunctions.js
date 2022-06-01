@@ -2,10 +2,11 @@ const {
   LoadAllFilesFromFolder,
   EnsureFolderExistsSync,
 } = require('./fsExtras');
+const {loggingWarning} = require('./logging');
 
 /**
  * Loads all middlewares from a folder.
- * @param app {Express} -Express app
+ * @param app {any} -app
  * @param middlewareDir {string} -Path to the folder containing the middleware
  */
 function loadMiddlewares(app, middlewareDir) {
@@ -54,7 +55,7 @@ function loadMiddlewares(app, middlewareDir) {
     } = middleware;
 
     if (disabled) {
-      console.log(`Middleware "${name}" is disabled`);
+      loggingWarning(`Middleware "${name}" is disabled`);
       return;
     }
     if (typeof handle === 'function') {
@@ -69,7 +70,7 @@ function loadMiddlewares(app, middlewareDir) {
 
 /**
  * Loads all endpoints from a folder.
- * @param app {Express} -Express app
+ * @param app {any} -app
  * @param endpointsDir {string} -Path to the folder containing the endpoints
  */
 function loadEndpoints(app, endpointsDir) {
@@ -103,7 +104,7 @@ function loadEndpoints(app, endpointsDir) {
     } = endpoint;
 
     if (disabled) {
-      console.log(`Endpoint "${name}" is disabled`);
+      loggingWarning(`Endpoint "${name}" is disabled`);
       return;
     }
 

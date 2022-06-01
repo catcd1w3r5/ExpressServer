@@ -1,13 +1,10 @@
-const createServer = require('./createServer');
-const {
-  loadMiddlewares,
-  loadEndpoints,
-} = require('./serverFunctions');
-const { debugMode } = require('./serverExtras');
+const {loadEndpoints, loadMiddlewares} = require('./serverFunctions');
+const {setLoggingWarning} = require('./logging');
 
-module.exports = {
-  createServer,
-  loadMiddlewares,
-  loadEndpoints,
-  debugMode,
-};
+const Exports = {
+    loadEndpoints,
+    loadMiddlewares,
+    setLoggingWarning,
+}
+
+module.exports = Exports;
