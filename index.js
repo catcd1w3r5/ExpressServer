@@ -1,10 +1,11 @@
 const {loadEndpoints, loadMiddlewares} = require('./serverFunctions');
-const {setLoggingWarning} = require('./logging');
+const {setLoggingEndpointOrMiddlewareDisabled, setLoggingFileSkipped} = require('./logging');
 
 const Exports = {
     loadEndpoints,
     loadMiddlewares,
-    setLoggingWarning,
+    setLoggingEndpointOrMiddlewareDisabled,
+    setLoggingFileSkipped
 }
 
 module.exports = Exports;

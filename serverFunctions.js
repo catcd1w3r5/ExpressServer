@@ -2,7 +2,7 @@ const {
   LoadAllFilesFromFolder,
   EnsureFolderExistsSync,
 } = require('./fsExtras');
-const {loggingWarning} = require('./logging');
+const {loggingWarning: loggingEndpointOrMiddlewareDisabled} = require('./logging');
 
 /**
  * Loads all middlewares from a folder.
@@ -55,7 +55,7 @@ function loadMiddlewares(app, middlewareDir) {
     } = middleware;
 
     if (disabled) {
-      loggingWarning(`Middleware "${name}" is disabled`);
+      loggingEndpointOrMiddlewareDisabled(`Middleware "${name}" is disabled`);
       return;
     }
     if (typeof handle === 'function') {
@@ -104,7 +104,7 @@ function loadEndpoints(app, endpointsDir) {
     } = endpoint;
 
     if (disabled) {
-      loggingWarning(`Endpoint "${name}" is disabled`);
+      loggingEndpointOrMiddlewareDisabled(`Endpoint "${name}" is disabled`);
       return;
     }
 

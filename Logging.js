@@ -1,10 +1,13 @@
-let loggingWarning = console.warn;
+let loggingEndpointOrMiddlewareDisabled = console.warn;
+let loggingFileSkipped = console.warn;
 
-setLoggingWarning = function (callback) {
-    loggingWarning = callback;
-}
+setLoggingEndpointOrMiddlewareDisabled = (callback) => loggingEndpointOrMiddlewareDisabled = callback;
+setLoggingFileSkipped = (callback) => loggingFileSkipped = callback;
+
 
 module.exports = {
-    loggingWarning,
-    setLoggingWarning,
+    loggingEndpointOrMiddlewareDisabled,
+    loggingFileSkipped,
+    setLoggingEndpointOrMiddlewareDisabled,
+    setLoggingFileSkipped
 }
