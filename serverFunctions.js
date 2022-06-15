@@ -128,7 +128,7 @@ function loadEndpoints(app, endpointsDir) {
 
     let loadCount = 0
     EnsureFolderExistsSync(endpointsDir);
-    const endpoints = LoadAllFilesFromFolder(endpointsDir, '.js', require, true);
+    const endpoints = LoadAllFilesFromFolder(endpointsDir, '.js', loadFile, true);
 
     // flatten the array
     endpoints.forEach((endpoint, i) => {
