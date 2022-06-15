@@ -1,13 +1,25 @@
-let loggingEndpointOrMiddlewareDisabled = console.warn;
-let loggingFileSkipped = console.warn;
+const loggers = {
+    loggingEMDisabled: (msg) => console.warn(msg),
+    loggingEMLoad: (msg) => console.info(msg),
+    loggingError: (msg) => {
+        throw new Error(msg);
+    },
+    debug: () => {
+    },
+}
 
-setLoggingEndpointOrMiddlewareDisabled = (callback) => loggingEndpointOrMiddlewareDisabled = callback;
-setLoggingFileSkipped = (callback) => loggingFileSkipped = callback;
+
+setLoggingEMDisabled = (callback) => loggers.loggingEMDisabled = callback;
+setLoggingEMLoad = (callback) => loggers.loggingEMLoad = callback;
+setLoggingError = (callback) => loggers.loggingError = callback;
+setDebug = (callback) => loggers.debug = callback;
 
 
 module.exports = {
-    loggingEndpointOrMiddlewareDisabled,
-    loggingFileSkipped,
-    setLoggingEndpointOrMiddlewareDisabled,
-    setLoggingFileSkipped
+    ...loggers,
+
+    setLoggingEMDisabled,
+    setLoggingEMLoad,
+    setLoggingError,
+    setDebug
 }

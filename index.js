@@ -1,11 +1,13 @@
 const {loadEndpoints, loadMiddlewares} = require('./serverFunctions');
-const {setLoggingEndpointOrMiddlewareDisabled, setLoggingFileSkipped} = require('./logging');
+const {setLoggingEMDisabled, setLoggingEMLoad,setLoggingError, setDebug} = require('./logging');
 
 const Exports = {
     loadEndpoints,
     loadMiddlewares,
-    setLoggingEndpointOrMiddlewareDisabled,
-    setLoggingFileSkipped
+    setLoggingEMDisabled,
+    setLoggingEMLoad,
+    setLoggingError,
+    setDebug,
 }
 
 module.exports = Exports;
